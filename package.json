@@ -19,6 +19,7 @@
     "build:esm": "tsc --project tsconfig.build.json --module ESNext --outDir dist/esm",
     "build:cjs": "tsc --project tsconfig.build.json --module CommonJS --outDir dist/cjs",
     "clean": "rd /s /q dist 2>nul || echo No dist folder",
+    "prepare": "npm run build",
     "test": "jest",
     "test:watch": "jest --watch"
   },
