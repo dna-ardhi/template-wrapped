@@ -10,11 +10,11 @@ const VariantC = ({ background = '#1a1a1a', isBackgroundImage = false, title, de
         : { backgroundColor: background };
     const renderCTA = () => {
         if (href) {
-            return ((0, jsx_runtime_1.jsx)("a", { href: href, className: "vs-cta", children: ctaText }));
+            return (0, jsx_runtime_1.jsx)("a", { href: href, className: "tw-cta", children: ctaText });
         }
-        return ((0, jsx_runtime_1.jsx)("button", { onClick: onClick, className: "vs-cta", children: ctaText }));
+        return (0, jsx_runtime_1.jsx)("button", { onClick: onClick, className: "tw-cta", children: ctaText });
     };
-    return ((0, jsx_runtime_1.jsxs)("div", { className: "vs-container vs-variant-c", style: containerStyle, children: [isBackgroundImage && ((0, jsx_runtime_1.jsx)("div", { className: "vs-overlay", style: { backgroundColor: 'rgba(0,0,0,0.6)' } })), (0, jsx_runtime_1.jsxs)("div", { className: "vs-variant-c-content", children: [(0, jsx_runtime_1.jsx)("h1", { className: "vs-title", children: title }), description && (0, jsx_runtime_1.jsx)("p", { className: "vs-description", children: description })] }), (0, jsx_runtime_1.jsx)("div", { className: "vs-variant-c-footer", children: image && (0, jsx_runtime_1.jsx)("img", { src: image, alt: title, className: "vs-content-image" }) }), (0, jsx_runtime_1.jsx)("div", { className: "vs-variant-c-cta", children: renderCTA() })] }));
+    return ((0, jsx_runtime_1.jsxs)("div", { className: "tw-container tw-variant-c", style: containerStyle, children: [isBackgroundImage && (image ? ((0, jsx_runtime_1.jsx)("img", { src: image, alt: title, className: "tw-content-image" })) : ((0, jsx_runtime_1.jsx)("div", { className: "tw-placeholder", children: (0, jsx_runtime_1.jsx)("span", { children: "No Image" }) }))), !isBackgroundImage && (0, jsx_runtime_1.jsx)("div", { className: "tw-overlay", style: { backgroundColor: 'rgba(0,0,0,0.6)' } }), (0, jsx_runtime_1.jsxs)("div", { className: "tw-variant-c-content", children: [(0, jsx_runtime_1.jsx)("h1", { className: "tw-title", children: title }), description && (0, jsx_runtime_1.jsx)("p", { className: "tw-description", children: description })] }), (0, jsx_runtime_1.jsx)("div", { className: "tw-variant-c-footer", children: !isBackgroundImage && image && (0, jsx_runtime_1.jsx)("img", { src: image, alt: title, className: "tw-content-image" }) }), (0, jsx_runtime_1.jsx)("div", { className: "tw-variant-c-cta", children: renderCTA() })] }));
 };
 exports.VariantC = VariantC;
 //# sourceMappingURL=VariantC.js.map

@@ -7,7 +7,7 @@ export interface StoryTemplateProps {
     title: string;
     /** Description text */
     description?: string;
-    /** Image source URL */
+    /** Image source URL (for variants that support it) */
     image?: string;
     /** CTA text */
     ctaText?: string;
@@ -15,5 +15,7 @@ export interface StoryTemplateProps {
     href?: string;
     /** CTA click handler (for actions) */
     onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
+    /** Variant to render: 'A', 'B', or 'C' */
+    variant?: 'A' | 'B' | 'C';
 }
 //# sourceMappingURL=types.d.ts.map

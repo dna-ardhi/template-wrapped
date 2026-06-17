@@ -11,5 +11,6 @@ export interface VariantCProps {
     href?: string;
     onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
 }
+export type VariantCType = 'C';
 export declare const VariantC: React.FC<VariantCProps>;
 //# sourceMappingURL=VariantC.d.ts.map
