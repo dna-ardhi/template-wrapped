@@ -1,0 +1,106 @@
+/* Shared CSS variables */
+:root {
+  --tw-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --tw-text-primary: #ffffff;
+  --tw-text-secondary: #e5e5e5;
+  --tw-bg-dark: #1a1a1a;
+  --tw-bg-light: #f5f5f5;
+  --tw-cta-primary: #007bff;
+  --tw-cta-hover: #0056b3;
+}
+
+/* Base 9:16 container */
+.tw-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 9 / 16;
+  background-color: var(--tw-bg-dark);
+  overflow: hidden;
+}
+
+/* Text styles */
+.tw-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tw-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tw-description {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--tw-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Image styles */
+.tw-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tw-content-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder styles */
+.tw-placeholder,
+.tw-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tw-placeholder-text {
+  color: #fff;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* CTA button styles */
+.tw-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--tw-cta-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.tw-cta:hover {
+  background-color: var(--tw-cta-hover);
+}
+
+.tw-cta:active {
+  transform: scale(0.98);
+}
+
+/* Overlay */
+.tw-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
