@@ -1,6 +1,5 @@
 import React from 'react';
-import './variantC.css';
-import '../styles/variables.css';
+import { sharedStyles, variantCStyles } from '../styles/styles';
 
 export interface VariantCProps {
   background?: string;
@@ -26,37 +25,40 @@ export const VariantC: React.FC<VariantCProps> = ({
   onClick,
 }) => {
   const containerStyle: React.CSSProperties = isBackgroundImage
-    ? { backgroundImage: `url(${background})` }
-    : { backgroundColor: background };
+    ? { ...sharedStyles.twContainer, backgroundImage: `url(${background})` }
+    : { ...sharedStyles.twContainer, backgroundColor: background };
 
   const renderCTA = () => {
+    const baseStyle = { ...sharedStyles.twCta };
+    const ctaStyle = href ? baseStyle : { ...baseStyle, ...sharedStyles.twCtaActive };
+
     if (href) {
-      return <a href={href} className="tw-cta">{ctaText}</a>;
+      return <a href={href} style={ctaStyle}>{ctaText}</a>;
     }
-    return <button onClick={onClick} className="tw-cta">{ctaText}</button>;
+    return <button onClick={onClick} style={ctaStyle}>{ctaText}</button>;
   };
 
   return (
-    <div className="tw-container tw-variant-c" style={containerStyle}>
+    <div style={{ ...sharedStyles.twContainer, ...variantCStyles.container, ...containerStyle }}>
       {isBackgroundImage && (
         image ? (
-          <img src={image} alt={title} className="tw-content-image" />
+          <img src={image} alt={title} style={sharedStyles.twContentImage} />
         ) : (
-          <div className="tw-placeholder"><span>No Image</span></div>
+          <div style={sharedStyles.twPlaceholder}><span style={sharedStyles.twPlaceholderText}>No Image</span></div>
         )
       )}
-      {!isBackgroundImage && <div className="tw-overlay" style={{ backgroundColor: 'rgba(0,0,0,0.6)' }} />}
+      {!isBackgroundImage && <div style={{ ...sharedStyles.twOverlay, backgroundColor: 'rgba(0,0,0,0.6)' }} />}
 
-      <div className="tw-variant-c-content">
-        <h1 className="tw-title">{title}</h1>
-        {description && <p className="tw-description">{description}</p>}
+      <div style={variantCStyles.content}>
+        <h1 style={sharedStyles.twTitle}>{title}</h1>
+        {description && <p style={sharedStyles.twDescription}>{description}</p>}
       </div>
 
-      <div className="tw-variant-c-footer">
-        {!isBackgroundImage && image && <img src={image} alt={title} className="tw-content-image" />}
+      <div style={variantCStyles.footer}>
+        {!isBackgroundImage && image && <img src={image} alt={title} style={sharedStyles.twContentImage} />}
       </div>
 
-      <div className="tw-variant-c-cta">{renderCTA()}</div>
+      <div style={variantCStyles.cta}>{renderCTA()}</div>
     </div>
   );
 };

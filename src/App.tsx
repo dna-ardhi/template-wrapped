@@ -21,7 +21,6 @@ function App() {
         <VariantB
           title="My Story"
           description="This is a great story"
-          image="https://picsum.photos/400/600"
           ctaText="Learn More"
           onClick={(e) => console.log('Clicked!', e)}
         />

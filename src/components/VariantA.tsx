@@ -1,6 +1,5 @@
 import React from 'react';
-import './variantA.css';
-import '../styles/variables.css';
+import { sharedStyles, variantAStyles } from '../styles/styles';
 
 export interface VariantAProps {
   background?: string;
@@ -26,37 +25,40 @@ export const VariantA: React.FC<VariantAProps> = ({
   onClick,
 }) => {
   const containerStyle: React.CSSProperties = isBackgroundImage
-    ? { backgroundImage: `url(${background})` }
-    : { backgroundColor: background };
+    ? { ...sharedStyles.twContainer, backgroundImage: `url(${background})` }
+    : { ...sharedStyles.twContainer, backgroundColor: background };
 
   const renderCTA = () => {
+    const baseStyle = { ...sharedStyles.twCta };
+    const ctaStyle = href ? baseStyle : { ...baseStyle, ...sharedStyles.twCtaActive };
+
     if (href) {
-      return <a href={href} className="tw-cta">{ctaText}</a>;
+      return <a href={href} style={ctaStyle}>{ctaText}</a>;
     }
-    return <button onClick={onClick} className="tw-cta">{ctaText}</button>;
+    return <button onClick={onClick} style={ctaStyle}>{ctaText}</button>;
   };
 
   return (
-    <div className="tw-container tw-variant-a" style={containerStyle}>
+    <div style={{ ...sharedStyles.twContainer, ...variantAStyles.container, ...containerStyle }}>
       {isBackgroundImage && (
         image ? (
-          <img src={image} alt={title} className="tw-image" />
+          <img src={image} alt={title} style={sharedStyles.twImage} />
         ) : (
-          <div className="tw-placeholder"><span>No Image</span></div>
+          <div style={sharedStyles.twPlaceholder}><span style={sharedStyles.twPlaceholderText}>No Image</span></div>
         )
       )}
-      {!isBackgroundImage && <div className="tw-overlay" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }} />}
+      {!isBackgroundImage && <div style={{ ...sharedStyles.twOverlay, backgroundColor: 'rgba(0,0,0,0.5)' }} />}
 
-      <div className="tw-variant-a-header">
-        <h1 className="tw-title">{title}</h1>
-        {description && <p className="tw-description">{description}</p>}
+      <div style={variantAStyles.header}>
+        <h1 style={sharedStyles.twTitle}>{title}</h1>
+        {description && <p style={sharedStyles.twDescription}>{description}</p>}
       </div>
 
-      <div className="tw-variant-a-image">
-        {!isBackgroundImage && image && <img src={image} alt={title} className="tw-image" />}
+      <div style={variantAStyles.image}>
+        {!isBackgroundImage && image && <img src={image} alt={title} style={sharedStyles.twImage} />}
       </div>
 
-      <div className="tw-variant-a-footer">{renderCTA()}</div>
+      <div style={variantAStyles.footer}>{renderCTA()}</div>
     </div>
   );
 };

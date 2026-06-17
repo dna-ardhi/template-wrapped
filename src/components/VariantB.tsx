@@ -1,6 +1,5 @@
 import React from 'react';
-import './variantB.css';
-import '../styles/variables.css';
+import { sharedStyles, variantBStyles } from '../styles/styles';
 
 export interface VariantBProps {
   background?: string;
@@ -24,31 +23,34 @@ export const VariantB: React.FC<VariantBProps> = ({
   onClick,
 }) => {
   const containerStyle: React.CSSProperties = isBackgroundImage
-    ? { backgroundImage: `url(${background})` }
-    : { backgroundColor: background };
+    ? { ...sharedStyles.twContainer, backgroundImage: `url(${background})` }
+    : { ...sharedStyles.twContainer, backgroundColor: background };
 
   const renderCTA = () => {
+    const baseStyle = { ...sharedStyles.twCta };
+    const ctaStyle = href ? baseStyle : { ...baseStyle, ...sharedStyles.twCtaActive };
+
     if (href) {
-      return <a href={href} className="tw-cta">{ctaText}</a>;
+      return <a href={href} style={ctaStyle}>{ctaText}</a>;
     }
-    return <button onClick={onClick} className="tw-cta">{ctaText}</button>;
+    return <button onClick={onClick} style={ctaStyle}>{ctaText}</button>;
   };
 
   return (
-    <div className="tw-container tw-variant-b" style={containerStyle}>
+    <div style={{ ...sharedStyles.twContainer, ...variantBStyles.container, ...containerStyle }}>
       {isBackgroundImage && (
         <>
-          <div className="tw-image-placeholder"><span>No Image</span></div>
-          <div className="tw-overlay" style={{ backgroundColor: 'rgba(0,0,0,0.4)' }} />
+          <div style={sharedStyles.twPlaceholder}><span style={sharedStyles.twPlaceholderText}>No Image</span></div>
+          <div style={{ ...sharedStyles.twOverlay, backgroundColor: 'rgba(0,0,0,0.4)' }} />
         </>
       )}
 
-      <div className="tw-variant-b-content">
-        <h1 className="tw-title">{title}</h1>
-        {description && <p className="tw-description">{description}</p>}
+      <div style={variantBStyles.content}>
+        <h1 style={sharedStyles.twTitle}>{title}</h1>
+        {description && <p style={sharedStyles.twDescription}>{description}</p>}
       </div>
 
-      <div className="tw-variant-b-footer">{renderCTA()}</div>
+      <div style={variantBStyles.footer}>{renderCTA()}</div>
     </div>
   );
 };
